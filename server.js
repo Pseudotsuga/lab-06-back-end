@@ -9,6 +9,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const errormessage = 'Lynnwood is the only city worth knowing.';
 
 //Define Port to be listened to
 const PORT = process.env.PORT;
@@ -17,32 +18,30 @@ const PORT = process.env.PORT;
 app.use(express.static('./front-end'));
 
 //Define Functional Routes
-
 app.get('/location', (request, response) => {
+  const city = request.query.data;
+  if (city.toLowerCase() !== 'lynnwood'){
+    throw errormessage;
+  }
   try{
     const geoData = require('./data/geo.json');
-    const city = request.query.data;
     const locationData = new Location (city, geoData);
     response.send(locationData);
   }
   catch(error){
-    response.status(500).send('Sorry, something went wrong');
+    response.status(500);
+    console.error;
   }
 });
 
 app.get('/weather', (request, response) => {
-  try{
-    const weatherData = require('./data/darksky.json');
-    const forecastDataArray = [];
-    for(let i = 0; i < weatherData.daily.data.length; i++){
-      let forecastData = new Forecast (i, weatherData);
-      forecastDataArray.push(forecastData);
-    }
-    response.send(forecastDataArray);
+  const weatherData = require('./data/darksky.json');
+  const forecastDataArray = [];
+  for(let i = 0; i < weatherData.daily.data.length; i++){
+    let forecastData = new Forecast (i, weatherData);
+    forecastDataArray.push(forecastData);
   }
-  catch(error){
-    response.status(500).send('Sorry, something went wrong');
-  }
+  response.send(forecastDataArray);
 });
 
 
@@ -60,7 +59,7 @@ function Forecast (i, weatherData){
 }
 
 //Non-valid page response
-app.use('*', (request, response) => response.send('Sorry, that route does not exist.'));
+app.use('*', (request, response) => response.status(404).send('Sorry, that route does not exist.'));
 
 //Begin listening to port
 app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
