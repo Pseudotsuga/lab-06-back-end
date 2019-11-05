@@ -45,11 +45,10 @@ Actual time needed to complete: About half an hour once you subtract the time fo
 
 ## Feature #3: Weather
 
-Number and name of feature: 
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 40 Minutes
 
-Start time: 
+Start time: 9:20 AM
 
 Finish time: 
 
