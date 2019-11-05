@@ -1,10 +1,10 @@
 'use strict';
 
-
 // Define the requirements of the server
 // 1. Express on top of Node
 // 2. dotenv to specify port (consume .env files)
-// 3. COrS (Cross-Origin Scripting) 
+// 3. COrS (Cross-Origin Scripting)
+
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -18,17 +18,19 @@ app.use(express.static('./front-end'));
 
 //Define Functional Routes
 
-// TODO: Redefine this function to work for lab6
-// app.get('/data', (request, response) => {
-//   let airplanes = {
-//     departure: Date.now(),
-//     canFly: true,
-//     pilot: 'Well Trained',
-//     name: 'Calvin\'s dog, Sadie',
-//     school: 'ACME School of Airplane Flying',
-//   }
-//   response.status(200).json(airplanes);
-// });
+app.get('/location', (request, response) => {
+  const geoData = require('./data/geo.json');
+  const city = request.query.data;
+  const locationData = new Location (city, geoData);
+  response.send(locationData);
+});
+
+function Location(city, geoData){
+  this.search_query = city;
+  this.formatted_query = geoData.results[0].formatted_address;
+  this.latitude = geoData.results[0].geometry.location.lat;
+  this.longitude = geoData.results[0].geometry.location.lng;
+}
 
 //Non-valid page response
 app.use('*', (request, response) => response.send('Sorry, that route does not exist.'));

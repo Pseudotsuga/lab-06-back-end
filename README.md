@@ -23,27 +23,25 @@
 
 ## Feature #1: Repository Setup
 
-Number and name of feature: 
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 0 Mins (I was fortunate enough to have my partner set this up for me.)
 
-Start time: 
+Start time: 8:00 AM
 
-Finish time: 
+Finish time: 8:05 AM
 
-Actual time needed to complete: 
+Actual time needed to complete: 5 Minutes.
 
 ## Feature #2: Locations
 
-Number and name of feature: 
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 40 Minutes.
 
-Start time: 
+Start time: 8:10 AM
 
-Finish time: 
+Finish time: 9:20 AM 
 
-Actual time needed to complete: 
+Actual time needed to complete: About half an hour once you subtract the time for my one-on-one. 
 
 ## Feature #3: Weather
 
