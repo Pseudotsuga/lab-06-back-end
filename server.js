@@ -19,21 +19,32 @@ app.use(express.static('./front-end'));
 //Define Functional Routes
 
 app.get('/location', (request, response) => {
-  const geoData = require('./data/geo.json');
-  const city = request.query.data;
-  const locationData = new Location (city, geoData);
-  response.send(locationData);
+  try{
+    const geoData = require('./data/geo.json');
+    const city = request.query.data;
+    const locationData = new Location (city, geoData);
+    response.send(locationData);
+  }
+  catch(error){
+    response.status(500).send('Sorry, something went wrong');
+  }
 });
 
 app.get('/weather', (request, response) => {
-  const weatherData = require('./data/darksky.json');
-  const forecastDataArray = [];
-  for(let i = 0; i < weatherData.daily.data.length; i++){
-    let forecastData = new Forecast (i, weatherData);
-    forecastDataArray.push(forecastData);
+  try{
+    const weatherData = require('./data/darksky.json');
+    const forecastDataArray = [];
+    for(let i = 0; i < weatherData.daily.data.length; i++){
+      let forecastData = new Forecast (i, weatherData);
+      forecastDataArray.push(forecastData);
+    }
+    response.send(forecastDataArray);
   }
-  response.send(forecastDataArray);
+  catch(error){
+    response.status(500).send('Sorry, something went wrong');
+  }
 });
+
 
 // Helper Functions
 function Location(city, geoData){
