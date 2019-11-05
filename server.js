@@ -9,6 +9,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const errormessage = 'Lynnwood is the only city worth knowing.';
 
 //Define Port to be listened to
 const PORT = process.env.PORT;
@@ -17,12 +18,20 @@ const PORT = process.env.PORT;
 app.use(express.static('./front-end'));
 
 //Define Functional Routes
-
 app.get('/location', (request, response) => {
-  const geoData = require('./data/geo.json');
   const city = request.query.data;
-  const locationData = new Location (city, geoData);
-  response.send(locationData);
+  if (city.toLowerCase() !== 'lynnwood'){
+    throw errormessage;
+  }
+  try{
+    const geoData = require('./data/geo.json');
+    const locationData = new Location (city, geoData);
+    response.send(locationData);
+  }
+  catch(error){
+    response.status(500);
+    console.error;
+  }
 });
 
 app.get('/weather', (request, response) => {
@@ -34,6 +43,7 @@ app.get('/weather', (request, response) => {
   }
   response.send(forecastDataArray);
 });
+
 
 // Helper Functions
 function Location(city, geoData){
@@ -49,7 +59,7 @@ function Forecast (i, weatherData){
 }
 
 //Non-valid page response
-app.use('*', (request, response) => response.send('Sorry, that route does not exist.'));
+app.use('*', (request, response) => response.status(404).send('Sorry, that route does not exist.'));
 
 //Begin listening to port
 app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
