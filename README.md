@@ -56,11 +56,10 @@ Actual time needed to complete: 1 Hour and 29 Minutes
 
 ## Feature #4: Errors
 
-Number and name of feature: 
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 40 mins.
 
-Start time: 
+Start time: 10:53 AM
 
 Finish time: 
 
