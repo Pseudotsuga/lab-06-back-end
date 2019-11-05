@@ -1,25 +1,33 @@
 # Project Name
 
-**Author**: Your Name Goes Here
+**Author**: Conor McCue
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This application takes in spoofed data in the form of JSON files and references them to display the map and weather of a queried location.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+1. Clone the repo
+2. Inside the terminal of your favorite IDE use npm to install the necessary dependencies from the package.JSON file. 
+3. Create a heroku application containing the files contained within this repository. 
+
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+<!-- This application uses HTML,CSS, and JavaScript for the front-end design. The back-end utilizes node.js as a runtime environment with express packaged on top for Quality of Life. The back-end is written entirely in JavaScript.  -->
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+ Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource.
+11-05-2019 8:05am - Application now has a full scaffold.
+
+11-05-2019 9:20am - Application now displays a map of the proper locale for the search string.
+
+11-05-2019 10:49am - Application now displays the weather of the locale referenced through the search string.
+
+11-05-2019 12:05pm - Application now has integrated error handling for locales outside of the dataset. 
 
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
+I worked with Trevor Thomphson for the duration of this lab.
 
 ## Feature #1: Repository Setup
 
@@ -61,6 +69,6 @@ Estimate of time needed to complete: 40 mins.
 
 Start time: 10:53 AM
 
-Finish time: 
+Finish time: 12:05 PM
 
-Actual time needed to complete: 
+Actual time needed to complete: 1 Hour and 8 Minutes.
