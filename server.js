@@ -30,7 +30,7 @@ app.get('/location', (request, response) => {
   }
   catch(error){
     response.status(500);
-    console.error;
+    console.log(error);
   }
 });
 
