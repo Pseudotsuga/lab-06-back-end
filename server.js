@@ -29,7 +29,7 @@ app.get('/location', (request, response) => {
     response.send(locationData);
   }
   catch(error){
-    response.status(500).send(console.log(error));
+    response.status(500).send(error);
   }
 });
 
